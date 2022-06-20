@@ -33,7 +33,7 @@ def iloscZyc():
     return iloscZyc
 
 iloscZyc = iloscZyc()
-print(iloscZyc)
+
 
 #3 wysietlamy slowo w podlogach  V
 def wypodlogujSlowo():
@@ -77,27 +77,36 @@ czyZgadl = False
 
 #podgladSlowa = zaktualizujPodglad(podgladSlowa, slowo, literka)
 
-while iloscZyc > 0:
+
+while iloscZyc > 0 and not czyZgadl:
     literka = input("Podaj literke: ")
-    if literkaWSlowie(literka, slowo) == True: # na uj mi to???
+    index = 0
+    podglad = list("_" *len(slowo))
+    current = slowo[index]
+    if current == literka:
+        podglad[index] = current
+    index += 1
+    print("".join(podglad))
+    print('tak,', literka, 'jest w slowie')
         #podgladSlowa = zaktualizujPodglad(podgladSlowa, slowo, literka)
         #print(podgladSlowa)
-
-        continue
-    else:
+else:
         iloscZyc = iloscZyc - 1
         print('ups')
-        print(iloscZyc)
+        print(iloscZyc)    
 
-    proba = input('zdadnij slowo!: ')
 
-    if proba == slowo:
-        print('brawo!')
-        czyZgadl = True
-    else:
-        print('ups')
-        iloscZyc = iloscZyc - 1
-        print(iloscZyc)
+
+
+proba = input('zdadnij slowo!: ')
+
+if proba == slowo:
+    print('brawo!')
+    czyZgadl = True
+else:
+    print('ups')
+    iloscZyc = iloscZyc - 1
+    print(iloscZyc)
 
 if czyZgadl == True:
     print('Brawo!')
