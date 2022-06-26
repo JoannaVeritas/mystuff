@@ -1,24 +1,53 @@
-message = 'wiadomosc do zaszyfrowania'
+message = 'koniczyna'
 
-print(len(message))
+#print('dlugosc wiadomosci: ', len(message))
 
-message_list = []
-for i in message:
-    message_list += i
+def szyfrowanie(wiadomosc):
+    print('wiadomosc na poczatku: ', wiadomosc)
+    wiadomosc_jako_lista = []
+    for i in wiadomosc:
+        wiadomosc_jako_lista += i
+    print('wiadomosc jako lista: ', wiadomosc_jako_lista)
+    duplikat_tej_listy = wiadomosc_jako_lista.copy()
 
-message_duplicat = message_list.copy()
+    rev_wiadomosci = duplikat_tej_listy[::-1]
+    print('rev wiadomosci: ', rev_wiadomosci)
 
-#print(message_list, message_duplicat_list)
-reversed_list = message_duplicat[::-1]
-print(reversed_list)
+    n = 0
+    zaszyfrowana = []
+    #print(len(wiadomosc))
+    while n <= len(wiadomosc)/2 :
+        zaszyfrowana.append(duplikat_tej_listy[n])
+        zaszyfrowana.append(rev_wiadomosci[n])
+        n = n + 1
 
-zaszyfrowana = []
+    return zaszyfrowana
 
-n = 0
-while n <= len(message)/2 :
-    zaszyfrowana.append(message_duplicat[n] + reversed_list[n])
-    n =+1
 
-wiadomosc = ''.join(zaszyfrowana)
-print('lista: ', zaszyfrowana)
-print('wiadomosc: ', wiadomosc)
+def deszyfrowanie(zaszyfrowana):
+    zaszyfrowana_lista = []
+    for i in zaszyfrowana:
+        zaszyfrowana_lista += i
+    print('????????????????', zaszyfrowana_lista) # ok, dziala.
+
+    for z in zaszyfrowana_lista[::2] :
+         print(z, end ='')
+
+
+
+    zupa = 1
+    for x in zaszyfrowana_lista:
+        deszyf.append(zaszyfrowana_lista[zupa])
+        zupa = zupa + 2
+    print('a teraz?', deszyf)
+
+    return deszyf
+
+
+x = szyfrowanie(message)
+print('zaszyfrwana jako lista: ', x)
+zaszyfrowana = ''.join(x)
+print('wiadomosc: ', zaszyfrowana)
+
+y = deszyfrowanie(zaszyfrowana)
+print('deszyfrowana: ', y)
